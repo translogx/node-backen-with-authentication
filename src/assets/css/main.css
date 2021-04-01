@@ -1,0 +1,13 @@
+#home-main{
+    margin-top: 10%;
+}
+
+#home-main h1 {
+    text-align: center;
+}
+
+.home-form-buttons{
+    align-items: center;
+    /* padding-left: 20%;
+    padding-right: 20%; */
+}
