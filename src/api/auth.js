@@ -6,10 +6,6 @@ export default ({ config, db }) => {
     let r = Router();
     let auth = new AuthService();
 
-    // const helpers = {
-    //   exception: function(){return name;}
-    //   }
-
     /**
      * @api {post} /api/auth/signup Request User information
      * @apiName Signup User
@@ -18,7 +14,7 @@ export default ({ config, db }) => {
      * @apiSuccess {json} User data.
      */
     r.post('/signup', function (req, res) {
-        auth.signup(req, res);
+        return auth.signup(req, res);
       })
 
     /**

@@ -17,4 +17,52 @@
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
+    <script>
+        async function registeruser(){
+            const xhttp = new XMLHttpRequest();
+            var resp;
+            const firstname = document.getElementById("register-form-firstnameInput").value;
+            const lastname = document.getElementById("register-form-lastnameInput").value;
+            const useremail = document.getElementById("register-form-emailInput").value;
+            const userpassword = document.getElementById("register-form-passwordInput").value;
+            const confirmPassword = document.getElementById("register-form-cpasswordInput").value;
+
+            data = {
+                "firstName": firstname,
+                "lastName": lastname,
+                "email": useremail,
+                "password": userpassword
+            };
+            console.log(firstname);
+            console.log(lastname);
+            console.log(useremail);
+            console.log(userpassword);
+            
+            xhttp.open("POST", "/api/auth/signup", true);
+            xhttp.setRequestHeader("Content-type", "application/json");
+
+            xhttp.onreadystatechange = function() {
+                if (this.readyState === XMLHttpRequest.DONE ) { //&& this.status === 200
+                    console.log("here now >>>>>>>>>>  "+this.status);
+                    //window.location.replace("/");
+                    if (this !== null){
+                            var token = this.getResponseHeader("x-access-token");
+                            var cokieObj = "token="+token;
+                           document.cookie = cokieObj;
+                           const url = "/?key="+token;
+                           console.log(url);
+                           window.location.replace(url);
+                    }
+                    
+                    alert('yeyyya');
+
+                    }
+                }
+            xhttp.send(JSON.stringify(data)); 
+
+               // alert('yaaayyya');
+            
+            
+        }
+    </script>
 </body>

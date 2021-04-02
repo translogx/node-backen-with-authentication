@@ -3,12 +3,13 @@ import path from 'path'
 import express  from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
-import bodyParser from 'body-parser';
+import bodyParser, { urlencoded } from 'body-parser';
 import middleware from './middleware';
 import api from './api';
 import config from './config.json';
 import dotenv from 'dotenv';
 import handlebar from 'express-handlebars';
+import querystring from 'querystring';
 
 
 
@@ -33,13 +34,14 @@ app.use(cors({
 app.use(bodyParser.json({
 	limit : config.bodyLimit
 }));
+app.use(bodyParser.urlencoded({extended : false}))
 
 
 // connect to db
 //initializeDb( db => {
 
 	// internal middleware
-	app.use('/', middleware({ config}));
+	app.use( middleware({ config}));
 
 	// api router
 	app.use('/api', api({ config}));

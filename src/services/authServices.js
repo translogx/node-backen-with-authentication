@@ -70,46 +70,27 @@ export default class AuthService{
             }
 
             // Get the required data for signing up
-            let { firstName, lastName, email, telephone, password, isSocialSignUp } = req.body
+            let { firstName, lastName, email, password } = req.body
 
             let authDao = new AuthDao();
             let dbres = null;
-            
-            let userid = await generateuUserID((firstName + lastName + email).toUpperCase());
+            password = await encryptpass(password);
+               
 
-                
-            if (isSocialSignUp == undefined || isSocialSignUp == null || (isSocialSignUp == 'N' || isSocialSignUp == false)){
+                dbres = 'SUCCESS'
+                //  await authDao.saveNewUser(
+                //     firstName,
+                //     lastName,
+                //     "",
+                //     email,
+                //     password,
+                // );
 
-
-                password = await encryptpass(password);
-
-                dbres =  await authDao.saveNewUser(
-                    firstName,
-                    lastName,
-                    "",
-                    email,
-                    password,
-                    userid
-                )
-            }else{
-
-                dbres =  await authDao.saveNewUser(
-                    firstName,
-                    lastName,
-                    "",
-                    email,
-                    null,
-                    userid
-                )
-
-            }
-
-            if (dbres == 'SUCCESS'){
-
-                let jwtoken = generateJWTToken({userid:userid, email: email});
+            if (dbres === 'SUCCESS'){
+                let jwtoken =  generateJWTToken({email: email});
                 res.set('X-ACCESS-TOKEN', jwtoken);
     
-                return res.render("homepage");
+                return res.render("homepage") // res.json({resdata :"success"});
                 
             } else {
                 throw (dbres)
@@ -121,6 +102,8 @@ export default class AuthService{
             // };
 
             // return res.status(201).json(Dummy.signUpData());
+
+            
             
         } catch (err) {
             console.log(err);
@@ -128,7 +111,7 @@ export default class AuthService{
                 msg: err,
                 isSuccess: false
             }
-            return res.render('register');
+            return res.json("failed");
         }
     }
 
