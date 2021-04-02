@@ -1,13 +1,69 @@
-#home-main{
+/* 
+    LOGIN  SCREEN
+
+*/
+#login-main{
     margin-top: 10%;
 }
 
-#home-main h1 {
+#login-main h1 {
     text-align: center;
 }
 
-.home-form-buttons{
-    align-items: center;
-    /* padding-left: 20%;
-    padding-right: 20%; */
+/* 
+    REGISTER  SCREEN
+
+*/
+#register-main{
+    margin-top: 5%;
+}
+.bi-chevron-left{
+    margin-right: 10px;
+}
+
+#register-main h1 {
+    text-align: center;
+}
+
+
+/* 
+    HOME  SCREEN
+
+*/
+#home-resume{
+    text-align: justify;
+    
+}
+
+#home-main{
+    padding-top: 10px;
+}
+
+.home-to-signup{
+    margin-right: 5px;
+}
+.home-navigation a{
+    /* display: flex; */
+    text-decoration: none;
+    color: unset;
+}
+.home-navigation a:hover{
+    /* display: flex; */
+    text-decoration-line: underline;
+    color: darkslategrey;
+}
+
+/* 
+    NOTFOUND  SCREEN
+
+*/
+#notfound-main{
+   padding: 10%;
+}
+.bi-chevron-left{
+    margin-right: 10px;
+}
+
+#register-main h1 {
+    text-align: center;
 }

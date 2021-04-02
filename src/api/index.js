@@ -15,5 +15,23 @@ export default ({ config, db }) => {
 		res.render('homepage')
 	});
 
+	api.get('/login', (req, res) => {
+		//const template = handlebar.compile('src/views/homepage.hbs', "name: {{name}}");
+		//res.json({ "service": 'Patricia APIs' });
+		res.render('login')
+	});
+
+	api.get('/register', (req, res) => {
+		//const template = handlebar.compile('src/views/homepage.hbs', "name: {{name}}");
+		//res.json({ "service": 'Patricia APIs' });
+		res.render('register')
+	});
+
+	api.get('/*', (req, res) => {
+		//const template = handlebar.compile('src/views/homepage.hbs', "name: {{name}}");
+		//res.json({ "service": 'Patricia APIs' });
+		res.render('notfound')
+	});
+
 	return api;
 }
