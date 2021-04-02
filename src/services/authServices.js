@@ -108,22 +108,8 @@ export default class AuthService{
 
                 let jwtoken = generateJWTToken({userid:userid, email: email});
                 res.set('X-ACCESS-TOKEN', jwtoken);
-                //console.log("Message sent: %s", info.messageId);
     
-                //console.log(info);
-    
-                let respdata = {
-
-                    // "firstName": firstName,
-                    // "lastName": lastName,
-                    // "email": email,
-                    //"userid": userid,
-                   // "isverified": 'N',
-                    "msg": "User created successfully",
-                    "isSuccess": true
-                };
-    
-                return res.status(201).json(respdata);
+                return res.render("homepage");
                 
             } else {
                 throw (dbres)
@@ -142,7 +128,7 @@ export default class AuthService{
                 msg: err,
                 isSuccess: false
             }
-            return res.status(400).json(respdata);
+            return res.render('register');
         }
     }
 

@@ -24,7 +24,7 @@ export default ({ config, db }) => {
 	api.get('/register', (req, res) => {
 		//const template = handlebar.compile('src/views/homepage.hbs', "name: {{name}}");
 		//res.json({ "service": 'Patricia APIs' });
-		res.render('register')
+		res.render('register', {mesg: ""})
 	});
 
 	api.get('/*', (req, res) => {

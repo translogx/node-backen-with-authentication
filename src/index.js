@@ -39,7 +39,7 @@ app.use(bodyParser.json({
 //initializeDb( db => {
 
 	// internal middleware
-	app.use(middleware({ config}));
+	app.use('/', middleware({ config}));
 
 	// api router
 	app.use('/api', api({ config}));

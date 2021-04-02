@@ -24,6 +24,21 @@
 #register-main h1 {
     text-align: center;
 }
+.register-err-msg{
+    color: red;
+    font-size: 15px;
+    text-align: center;
+}
+.register-to-login{
+    text-decoration-line: underline;
+    color: unset;
+    font-size: 13px;
+}
+.register-to-login:hover{
+    text-decoration-line: underline;
+    color: darkslategrey;
+}
+
 
 
 /* 
