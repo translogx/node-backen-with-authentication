@@ -25,7 +25,6 @@
             const lastname = document.getElementById("register-form-lastnameInput").value;
             const useremail = document.getElementById("register-form-emailInput").value;
             const userpassword = document.getElementById("register-form-passwordInput").value;
-            const confirmPassword = document.getElementById("register-form-cpasswordInput").value;
 
             data = {
                 "firstName": firstname,
@@ -33,10 +32,6 @@
                 "email": useremail,
                 "password": userpassword
             };
-            console.log(firstname);
-            console.log(lastname);
-            console.log(useremail);
-            console.log(userpassword);
             
             xhttp.open("POST", "/api/auth/signup", true);
             xhttp.setRequestHeader("Content-type", "application/json");
@@ -53,15 +48,56 @@
                            console.log(url);
                            window.location.replace(url);
                     }
-                    
-                    alert('yeyyya');
 
                     }
                 }
             xhttp.send(JSON.stringify(data)); 
-
-               // alert('yaaayyya');
             
+        }
+    </script>
+    <script>
+        function logout(){
+            console.log("inlogout");
+            document.cookie = "token=;";
+        }
+    </script>
+    <script>
+        function login(){
+            const xhttp = new XMLHttpRequest();
+            var resp;
+
+            const useremail = document.getElementById("login-form-emailInput").value;
+            const userpassword = document.getElementById("login-form-passwordInput").value;
+
+            data = {
+                "email": useremail,
+                "password": userpassword
+            };
+            xhttp.open("POST", "/api/auth/login", true);
+            xhttp.setRequestHeader("Content-type", "application/json");
+
+            xhttp.onreadystatechange = function() {
+                if (this.readyState === XMLHttpRequest.DONE ) { //&& this.status === 200
+                    console.log("here now >>>>>>>>>>  "+this.status);
+                    //window.location.replace("/");
+                    resp = JSON.parse(this.response);
+
+                    if (resp !== null && resp.resdata !=="failed"){
+                            var token = this.getResponseHeader("x-access-token");
+                            var cokieObj = "token="+token;
+                           document.cookie = cokieObj;
+                           const url = "/?key="+token;
+
+                           window.location.replace(url); 
+                           return;
+                    }else{
+                        window.location.replace("/login?err=failed"); 
+                    }
+
+                }
+                }
+            xhttp.send(JSON.stringify(data)); 
+
             
         }
     </script>

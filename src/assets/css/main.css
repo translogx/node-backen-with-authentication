@@ -57,8 +57,12 @@
 .home-to-signup{
     margin-right: 5px;
 }
+.home-navigation{
+    align-content: flex-end;
+}
 .home-navigation a{
     /* display: flex; */
+    
     text-decoration: none;
     color: unset;
 }

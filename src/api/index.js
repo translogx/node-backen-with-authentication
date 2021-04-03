@@ -20,7 +20,7 @@ export default ({ config, db }) => {
 		}
 		//console.log(req.headers.cookie.split('token=')[1]);
 		
-		if (token === null || token === undefined){
+		if (token === null || token === undefined || token === ""){
 			return res.render('register', {exception: true, mesg: "Please login or Signup to view the page."})
 		}else{
 			return res.render('homepage');
@@ -31,7 +31,12 @@ export default ({ config, db }) => {
 	api.get('/login', (req, res) => {
 		//const template = handlebar.compile('src/views/homepage.hbs', "name: {{name}}");
 		//res.json({ "service": 'Patricia APIs' });
-		res.render('login')
+		if (req.query.err){
+			res.render('login', {msg :"invalid username or password" })
+		}else{
+			res.render('login')
+		}
+		
 	});
 
 	api.get('/register', (req, res) => {

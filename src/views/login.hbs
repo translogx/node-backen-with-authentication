@@ -10,7 +10,13 @@
         <h1>Login</h1>
     </div>
     <div class="col offset-md-4 col-md-4 mt-4">
-        <form action="" class="">
+        {{#if  msg}}
+        <div class="mb-3 pd-4 register-err-msg">
+                {{!-- <label for="exampleFormControlInput1" class="form-label">Username</label> --}}
+                {{{msg}}}
+            </div>
+        {{/if}}
+        <div action="" class="">
             <div class="mb-3 pd-4">
                 {{!-- <label for="exampleFormControlInput1" class="form-label">Email address</label> --}}
                 <input type="email" class="form-control" id="login-form-emailInput" placeholder="enyinwa.vincent@outlook.com">
@@ -25,10 +31,10 @@
             </div>
             <div class="row align-items-center justify-content-evenly">
                 <div class="col-auto">
-                    <button type="submit" class="btn btn-primary mb-3">Submit</button>
+                    <button type="submit" onclick="login()" class="btn btn-primary mb-3">Submit</button>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
     
 </div>

@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({extended : false}))
 
 
 // connect to db
-//initializeDb( db => {
+// initializeDb( db => {
 
 	// internal middleware
 	app.use( middleware({ config}));
@@ -50,6 +50,6 @@ app.use(bodyParser.urlencoded({extended : false}))
 	app.server.listen(process.env.PORT || config.port, () => {
 		console.log(`Started on port ${app.server.address().port}`, process.env.SOCKET);
 	});
-//});
+// });
 
 export default app;

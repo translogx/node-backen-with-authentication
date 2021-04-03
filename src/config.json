@@ -2,5 +2,5 @@
 	"port": 8081,
 	"bodyLimit": "256kb",
 	"corsHeaders": ["Link"],
-	"databases" : []
+	"database" : []
 }
